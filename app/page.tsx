@@ -1,8 +1,18 @@
-import { redirect } from 'next/navigation';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  redirect('/business');
-}
+  const router = useRouter();
 
-// Force dynamic rendering for redirect to work properly
-export const dynamic = 'force-dynamic';
+  useEffect(() => {
+    router.replace('/business');
+  }, [router]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="text-white text-xl">Redirecting to Business Model...</div>
+    </div>
+  );
+}
